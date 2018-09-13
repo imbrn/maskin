@@ -13,9 +13,16 @@ class Maskin {
     return this._rawOutput.join("");
   }
 
+  execute(value) {
+    this._process(value);
+    return {
+      output: this._output.join(""),
+      rawOutput: this._rawOutput.join("")
+    };
+  }
+
   _process(value) {
     this._clear();
-    this._value = value;
 
     let i = 0;
     let j = 0;
@@ -29,10 +36,12 @@ class Maskin {
           // Does not include unclassified chars in the raw value
           this._output.push(this.mask[j].char);
           j++;
+          i++;
         }
       } else {
         if (this.mask[j].match(value[i])) {
           this._output.push(...this._prepend);
+          this._prepend = [];
           this._output.push(value[i]);
           this._rawOutput.push(value[i]); // Includes value in the raw output
           i++;
@@ -40,11 +49,8 @@ class Maskin {
         } else {
           i++;
         }
-        this._prepend = [];
       }
     }
-
-    this._output.push(...this._prepend);
   }
 
   _clear() {
