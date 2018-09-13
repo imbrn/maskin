@@ -1,5 +1,5 @@
 {
-  "name": "@maskin/core",
+  "name": "@maskin/react",
   "version": "0.0.0",
   "main": "index.js",
   "scripts": {
@@ -11,5 +11,8 @@
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^23.6.0",
     "jest": "^23.6.0"
+  },
+  "dependencies": {
+    "@maskin/core": "^0.0.0"
   }
 }
