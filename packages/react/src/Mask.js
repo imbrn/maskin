@@ -4,17 +4,44 @@ import Maskin from "@maskin/core";
 class Mask extends PureComponent {
   constructor(props) {
     super(props);
+
+    this.mask = Maskin(props.pattern);
+    const originalValue = props.defaultValue || "";
+    const initialResult = this.mask(originalValue, {
+      default: true,
+      raw: true
+    });
+
     this.state = {
-      value: ""
+      originalValue,
+      value: initialResult.default,
+      rawValue: initialResult.raw
     };
-    this.maskin = new Maskin(props.pattern);
+
     this.handleChange = this.handleChange.bind(this);
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps, prevState) {
     if (prevProps.pattern !== this.props.pattern) {
-      this.maskin = new Maskin(prevProps.pattern);
+      this.mask = Maskin(prevProps.pattern);
+      this.updateValues();
     }
+
+    if (prevState.originalValue !== this.state.originalValue) {
+      this.updateValues();
+    }
+  }
+
+  updateValues() {
+    const result = this.mask(this.state.originalValue, {
+      default: true,
+      raw: true
+    });
+
+    this.setState({
+      value: result.default,
+      rawValue: result.raw
+    });
   }
 
   render() {
@@ -33,8 +60,7 @@ class Mask extends PureComponent {
 
   handleChange(e) {
     this.setState({
-      value: this.maskin.output(e.target.value),
-      rawValue: this.maskin.rawOutput(e.target.value)
+      originalValue: e.target.value
     });
   }
 }

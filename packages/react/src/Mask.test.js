@@ -34,3 +34,18 @@ test("data flow", () => {
   expect(getByPlaceholderText("Value").value).toBe("12-ab");
   expect(getByTestId("raw").textContent).toBe("12ab");
 });
+
+test("defaultValue", () => {
+  const { getByValue } = render(
+    <Mask pattern="##-xx" defaultValue="1234-">
+      {({ value, rawValue }) => (
+        <Fragment>
+          <input placeholder="output" defaultValue={value} />
+          <input placeholder="rawOutput" defaultValue={rawValue} />
+        </Fragment>
+      )}
+    </Mask>
+  );
+  expect(getByValue("12-")).toBeDefined();
+  expect(getByValue("12")).toBeDefined();
+});
