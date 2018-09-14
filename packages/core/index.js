@@ -1,70 +1,77 @@
-class Maskin {
-  constructor(mask) {
-    this.mask = mask.split("").map(char => getMask(char));
+function Maskin(pattern) {
+  const mask = pattern.split("").map(buildMaskClass);
+
+  return (input, options = { raw: false, default: true }) => {
+    const result = performMasking(mask, input);
+
+    if (options.default && options.raw) {
+      return result;
+    } else if (options.raw) {
+      return result.raw;
+    } else {
+      return result.default;
+    }
+  };
+}
+
+/*
+Returns an object as result. This object contains both the default and raw
+values.
+Ex:
+  for pattern: ##-xx, and input: 12-ab, result:
+  {
+    default: 12-ab
+    raw: 12ab
   }
+*/
+function performMasking(mask, input) {
+  const defaultOutput = [];
+  const rawOutput = [];
+  const prepend = [];
 
-  output(value) {
-    this._process(value);
-    return this._output.join("");
-  }
+  let i = 0;
+  let j = 0;
 
-  rawOutput(value) {
-    this._process(value);
-    return this._rawOutput.join("");
-  }
+  while (i < mask.length && j < input.length) {
+    if (prepend.length && prepend[0].match(input[j])) {
+      const p = prepend.shift();
+      defaultOutput.push(p.char);
+      j++;
+      continue;
+    }
 
-  execute(value) {
-    this._process(value);
-    return {
-      output: this._output.join(""),
-      rawOutput: this._rawOutput.join("")
-    };
-  }
+    if (mask[i].match(input[j])) {
+      defaultOutput.push(...prepend.map(p => p.char));
+      defaultOutput.push(input[j]);
+      prepend.splice(0, prepend.length);
 
-  _process(value) {
-    this._clear();
+      if (isClassified(mask[i])) {
+        rawOutput.push(input[j]);
+      }
 
-    let i = 0;
-    let j = 0;
-
-    while (i < value.length && j < this.mask.length) {
-      if (isUnclassified(this.mask[j])) {
-        if (!this.mask[j].match(value[i])) {
-          this._prepend.push(this.mask[j].char);
-          j++;
-        } else {
-          // Does not include unclassified chars in the raw value
-          this._output.push(this.mask[j].char);
-          j++;
-          i++;
-        }
+      i++;
+      j++;
+    } else {
+      if (isClassified(mask[i])) {
+        j++;
       } else {
-        if (this.mask[j].match(value[i])) {
-          this._output.push(...this._prepend);
-          this._prepend = [];
-          this._output.push(value[i]);
-          this._rawOutput.push(value[i]); // Includes value in the raw output
-          i++;
-          j++;
-        } else {
-          i++;
-        }
+        prepend.push(mask[i]);
+        i++;
       }
     }
   }
 
-  _clear() {
-    this._output = [];
-    this._rawOutput = [];
-    this._prepend = [];
-  }
+  return {
+    default: defaultOutput.join(""),
+    raw: rawOutput.join("")
+  };
 }
 
-function isUnclassified(mask) {
-  return mask instanceof UnclassifiedMask;
+function isClassified(mask) {
+  return !(mask instanceof UnclassifiedMask);
 }
 
-function getMask(char) {
+function buildMaskClass(char) {
   const MaskClass = availableMasks.find(maskClass =>
     maskClass.compatible(char)
   );

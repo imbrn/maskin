@@ -1,45 +1,53 @@
 import Maskin from ".";
 
-test("output", () => {
-  expect(new Maskin("##-xx").output("12")).toEqual("12");
-  expect(new Maskin("##-xx").output("123")).toEqual("12");
-  expect(new Maskin("##-xx").output("12-")).toEqual("12-");
-  expect(new Maskin("##-xx").output("12-a")).toEqual("12-a");
-  expect(new Maskin("##-xx").output("12a")).toEqual("12-a");
-  expect(new Maskin("##-xx").output("a12")).toEqual("12");
-  expect(new Maskin("##-xx").output("a1b")).toEqual("1");
-  expect(new Maskin("##-xx").output("a1b2c3d4")).toEqual("12-cd");
-  expect(new Maskin("ii-#").output("Ab0")).toEqual("Ab-0");
-  expect(new Maskin("xX-#").output("aB0")).toEqual("aB-0");
-  expect(new Maskin("xX-#").output("Ab0")).toEqual("b");
-  expect(new Maskin("1_2").output("1_2")).toEqual("1_2");
+test("default mask", () => {
+  expect(Maskin("##-xx")("12")).toEqual("12");
+  expect(Maskin("##-xx")("12")).toEqual("12");
+  expect(Maskin("##-xx")("123")).toEqual("12");
+  expect(Maskin("##-xx")("12-a")).toEqual("12-a");
+  expect(Maskin("##-xx")("12a")).toEqual("12-a");
+  expect(Maskin("##-xx")("1234-")).toEqual("12-");
+  expect(Maskin("##-xx")("12-")).toEqual("12-");
+  expect(Maskin("##-xx")("a12")).toEqual("12");
+  expect(Maskin("##-xx")("a1b")).toEqual("1");
+  expect(Maskin("##-xx")("a1b2c3d4")).toEqual("12-cd");
+  expect(Maskin("ii-#")("Ab0")).toEqual("Ab-0");
+  expect(Maskin("xX-#")("aB0")).toEqual("aB-0");
+  expect(Maskin("xX-#")("Ab0")).toEqual("b");
+  expect(Maskin("1_2")("1_2")).toEqual("1_2");
+  expect(Maskin("1_2")("1_3")).toEqual("1_");
+  expect(Maskin("1--")("1-")).toEqual("1-");
+  expect(Maskin("1--")("1--")).toEqual("1--");
+  expect(Maskin("1--X")("1-A")).toEqual("1--A");
 });
 
-test("rawOutput", () => {
-  expect(new Maskin("##-xx").rawOutput("12")).toEqual("12");
-  expect(new Maskin("##-xx").rawOutput("123")).toEqual("12");
-  expect(new Maskin("##-xx").rawOutput("12-")).toEqual("12");
-  expect(new Maskin("##-xx").rawOutput("12-a")).toEqual("12a");
-  expect(new Maskin("##-xx").rawOutput("12a")).toEqual("12a");
-  expect(new Maskin("##-xx").rawOutput("a12")).toEqual("12");
-  expect(new Maskin("##-xx").rawOutput("a1b")).toEqual("1");
-  expect(new Maskin("##-xx").rawOutput("a1b2c3d4")).toEqual("12cd");
-  expect(new Maskin("ii-#").rawOutput("Ab0")).toEqual("Ab0");
-  expect(new Maskin("xX-#").rawOutput("aB0")).toEqual("aB0");
-  expect(new Maskin("xX-#").rawOutput("Ab0")).toEqual("b");
-  expect(new Maskin("1_2").rawOutput("1_2")).toEqual("");
+test("raw mask", () => {
+  expect(Maskin("##-xx")("12", { raw: true })).toEqual("12");
+  expect(Maskin("##-xx")("12", { raw: true })).toEqual("12");
+  expect(Maskin("##-xx")("123", { raw: true })).toEqual("12");
+  expect(Maskin("##-xx")("12-a", { raw: true })).toEqual("12a");
+  expect(Maskin("##-xx")("12a", { raw: true })).toEqual("12a");
+  expect(Maskin("##-xx")("1234-", { raw: true })).toEqual("12");
+  expect(Maskin("##-xx")("12-", { raw: true })).toEqual("12");
+  expect(Maskin("##-xx")("a12", { raw: true })).toEqual("12");
+  expect(Maskin("##-xx")("a1b", { raw: true })).toEqual("1");
+  expect(Maskin("##-xx")("a1b2c3d4", { raw: true })).toEqual("12cd");
+  expect(Maskin("ii-#")("Ab0", { raw: true })).toEqual("Ab0");
+  expect(Maskin("xX-#")("aB0", { raw: true })).toEqual("aB0");
+  expect(Maskin("xX-#")("Ab0", { raw: true })).toEqual("b");
+  expect(Maskin("1_2")("1_2", { raw: true })).toEqual("");
+  expect(Maskin("1_2")("1_3", { raw: true })).toEqual("");
+  expect(Maskin("1--")("1-", { raw: true })).toEqual("");
+  expect(Maskin("1--")("1--", { raw: true })).toEqual("");
+  expect(Maskin("1--X")("1-A", { raw: true })).toEqual("A");
 });
 
-test("execute", () => {
-  let result = new Maskin("##-xx").execute("12");
-  expect(result.output).toBe("12");
-  expect(result.rawOutput).toBe("12");
+test("both default and raw", () => {
+  let result = Maskin("##-xx")("12", { raw: true, default: true });
+  expect(result.default).toBe("12");
+  expect(result.raw).toBe("12");
 
-  result = new Maskin("##-xx").execute("12-a");
-  expect(result.output).toBe("12-a");
-  expect(result.rawOutput).toBe("12a");
-
-  result = new Maskin("1_2").execute("1_");
-  expect(result.output).toBe("1_");
-  expect(result.rawOutput).toBe("");
+  result = Maskin("##-xx")("a1b2c3d4", { raw: true, default: true });
+  expect(result.default).toBe("12-cd");
+  expect(result.raw).toBe("12cd");
 });
