@@ -1,15 +1,24 @@
 {
   "name": "@maskin/core",
+  "description": "Easy to use data masking",
+  "main": "./dist/core.cjs.js",
+  "module": "./dist/core.esm.js",
+  "jsdelivr": "./dist/core.min.js",
+  "unpkg": "./dist/core.min.js",
   "version": "0.0.0",
-  "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build": "rimraf -rf dist && rollup -c"
   },
   "devDependencies": {
     "@babel/core": "^7.0.1",
     "@babel/preset-env": "^7.0.0",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^23.6.0",
-    "jest": "^23.6.0"
+    "jest": "^23.6.0",
+    "rimraf": "^2.6.2",
+    "rollup": "^0.65.2",
+    "rollup-plugin-babel": "^4.0.3",
+    "rollup-plugin-uglify": "^5.0.2"
   }
 }
