@@ -8,7 +8,7 @@
   "module": "./dist/react.esm.js",
   "jsdelivr": "./dist/react.min.js",
   "unpkg": "./dist/react.min.js",
-  "version": "0.0.0",
+  "version": "0.0.1-alpha.0",
   "files": [
     "dist/",
     "src/"
@@ -33,7 +33,7 @@
     "rollup-plugin-uglify": "^5.0.2"
   },
   "dependencies": {
-    "@maskin/core": "^0.0.0"
+    "@maskin/core": "^0.0.1-alpha.0"
   },
   "peerDependencies": {
     "react": "16.x"
