@@ -56,7 +56,7 @@ const configs = [
   buildConfig({
     format: "iife",
     minified: true,
-    includeExtension: false,
+    includeExtension: true,
     extension: "browser"
   })
 ];
