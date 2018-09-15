@@ -1,6 +1,9 @@
 {
   "name": "@maskin/core",
   "description": "Easy to use data masking",
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "./dist/core.cjs.js",
   "module": "./dist/core.esm.js",
   "jsdelivr": "./dist/core.min.js",

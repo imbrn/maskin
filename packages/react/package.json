@@ -1,5 +1,13 @@
 {
   "name": "@maskin/react",
+  "description": "Easy to use input masking",
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "./dist/react.cjs.js",
+  "module": "./dist/react.esm.js",
+  "jsdelivr": "./dist/react.min.js",
+  "unpkg": "./dist/react.min.js",
   "version": "0.0.0",
   "main": "index.js",
   "scripts": {
