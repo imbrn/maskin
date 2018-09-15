@@ -9,6 +9,10 @@
   "jsdelivr": "./dist/react.min.js",
   "unpkg": "./dist/react.min.js",
   "version": "0.0.0",
+  "files": [
+    "dist/",
+    "src/"
+  ],
   "scripts": {
     "test": "jest",
     "build": "rimraf -rf dist && rollup -c"
