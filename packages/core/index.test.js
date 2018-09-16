@@ -42,6 +42,18 @@ test("raw mask", () => {
   expect(Maskin("1--X")("1-A", { raw: true })).toEqual("A");
 });
 
+test("passing pattern as array", () => {
+  expect(Maskin(["#", "#", "-", "x", "x"])("12-ab")).toBe("12-ab");
+  expect(Maskin(["#", "#", "-", "x", "x"])("12ab")).toBe("12-ab");
+});
+
+test("passing RegExp objects as pattern parts", () => {
+  expect(Maskin([/[a-z]/, "-", /[0-9]/])("a-0")).toBe("a-0");
+  expect(Maskin([/[a-z]/, "-", /[0-9]/])("a0")).toBe("a-0");
+  expect(Maskin([/[a-z]/, "-", /[0-9]/])("a-")).toBe("a-");
+  expect(Maskin([/[a-z]/, "-", /[0-9]/])("A0")).toBe("");
+});
+
 test("both default and raw", () => {
   let result = Maskin("##-xx")("12", { raw: true, default: true });
   expect(result.default).toBe("12");

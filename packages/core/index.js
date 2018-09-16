@@ -1,5 +1,9 @@
 function Maskin(pattern) {
-  const mask = pattern.split("").map(buildMaskClass);
+  if (typeof pattern === "string") {
+    pattern = pattern.split("");
+  }
+
+  const mask = pattern.map(buildMaskClass);
 
   return (input, options = { raw: false, default: true }) => {
     const result = performMasking(mask, input);
@@ -102,6 +106,20 @@ class StringMask {
   }
 }
 
+class RegExpMask {
+  constructor(pattern) {
+    this.pattern = pattern;
+  }
+
+  static compatible(part) {
+    return part instanceof RegExp === true;
+  }
+
+  match(value) {
+    return this.pattern.test(value);
+  }
+}
+
 class UnclassifiedMask {
   static compatible() {
     return true;
@@ -116,6 +134,6 @@ class UnclassifiedMask {
   }
 }
 
-const availableMasks = [NumberMask, StringMask, UnclassifiedMask];
+const availableMasks = [NumberMask, StringMask, RegExpMask, UnclassifiedMask];
 
 export default Maskin;
