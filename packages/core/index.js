@@ -75,30 +75,24 @@ function isClassified(mask) {
   return !(mask instanceof UnclassifiedMask);
 }
 
-function buildMaskClass(char) {
-  const MaskClass = availableMasks.find(maskClass =>
-    maskClass.compatible(char)
-  );
-  return new MaskClass(char);
+function buildMaskClass(part) {
+  if (part === "#") return new NumberMask();
+  if (part === "x") return new StringMask(false); // lowercase
+  if (part === "X") return new StringMask(true); // uppercase
+  if (part === "i") return new StringMask(); // ignore case
+  if (part instanceof RegExp) return new RegExpMask(part);
+  return new UnclassifiedMask(part);
 }
 
 class NumberMask {
-  static compatible(char) {
-    return char === "#";
-  }
-
   match(value) {
     return /[0-9]/.test(value);
   }
 }
 
 class StringMask {
-  constructor(char) {
-    this.pattern = char === "x" ? /[a-z]/ : char === "X" ? /[A-Z]/ : /[a-z]/i;
-  }
-
-  static compatible(char) {
-    return char === "x" || char === "X" || char === "i";
+  constructor(upper) {
+    this.pattern = upper === undefined ? /[a-z]/i : upper ? /[A-Z]/ : /[a-z]/;
   }
 
   match(value) {
@@ -111,20 +105,12 @@ class RegExpMask {
     this.pattern = pattern;
   }
 
-  static compatible(part) {
-    return part instanceof RegExp === true;
-  }
-
   match(value) {
     return this.pattern.test(value);
   }
 }
 
 class UnclassifiedMask {
-  static compatible() {
-    return true;
-  }
-
   constructor(char) {
     this.char = char;
   }
@@ -133,7 +119,5 @@ class UnclassifiedMask {
     return value === this.char;
   }
 }
-
-const availableMasks = [NumberMask, StringMask, RegExpMask, UnclassifiedMask];
 
 export default Maskin;
