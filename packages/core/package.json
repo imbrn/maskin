@@ -14,8 +14,9 @@
     "index.js"
   ],
   "scripts": {
+    "clean": "rimraf -rf dist",
     "test": "jest",
-    "build": "rimraf -rf dist && rollup -c"
+    "build": "npm run clean && rollup -c"
   },
   "devDependencies": {
     "@babel/core": "^7.0.1",

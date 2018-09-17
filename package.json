@@ -2,6 +2,7 @@
   "name": "root",
   "private": true,
   "scripts": {
+    "clean": "lerna run clean",
     "build": "lerna run build",
     "publish": "npm run build && lerna publish"
   },
