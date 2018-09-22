@@ -4,10 +4,10 @@ With Maskin you can provide your users a very natural way to input masked data.
 Let your users think they are typing without software intervention. But it will
 keep everything right.
 
-Masking is also really easy to configure and use. It provides you a lot of
+Maskin is also really easy to configure and use. It provides you a lot of
 flexibility in the way you declare your masking patterns.
 
-> This project is just in in an alpha stage and all its API is subject to
+> This project is just in an alpha stage and all its APIs are subject to
 > change. We're also open to suggestions and PRs from all of you.
 
 ## Modules
@@ -17,7 +17,7 @@ _Choose one of the sub-projects that fits your needs better:_
 - [JavaScript input/ouput masking](https://github.com/imbrn/maskin/tree/master/packages/core)
 
   _This project is a programming level utility for raw string input masking. It
-  provides you a way to mask string to string._
+  provides you a way to perform masking string to string._
 
   ```javascript
   import Maskin from "@maskin/core";
