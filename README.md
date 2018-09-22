@@ -44,7 +44,7 @@ _Choose one of the sub-projects that fits your needs better:_
   </Mask>;
   ```
 
-  > Take a lot at the project itself for more useful stuff for your to use in
+  > Take a look at the project itself for more useful information about how to use it in
   > your react projects.
 
 - Vue (coming soon)
