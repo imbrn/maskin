@@ -10,7 +10,7 @@ flexibility in the way you declare your masking patterns.
 > This project is just in an alpha stage and all its APIs are subject to
 > change. We're also open to suggestions and PRs from all of you.
 
-## Modules
+## Sub-projects
 
 _Choose one of the sub-projects that fits your needs better:_
 
