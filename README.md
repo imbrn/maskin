@@ -34,7 +34,7 @@ _Choose one of the sub-projects that fits your needs better:_
 
   Example of usage of the `Mask` component:
 
-  ```javascript
+  ```jsx
   import { Mask } from "@maskin/react";
 
   <Mask pattern="###-##.xx">
