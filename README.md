@@ -41,7 +41,7 @@ _Choose one of the sub-projects that fits your needs better:_
     {({ value, handleChage }) => (
       <input type="text" onChange={handleChange} value={value} />
     )}
-  </Mask>;
+  </Mask>
   ```
 
   > Take a look at the project itself for more useful information about how to use it in
