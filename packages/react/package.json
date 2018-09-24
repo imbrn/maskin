@@ -26,6 +26,8 @@
     "babel-jest": "^23.6.0",
     "babel-plugin-external-helpers": "^6.22.0",
     "jest": "^23.6.0",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
     "react-testing-library": "^5.0.1",
     "rimraf": "^2.6.2",
     "rollup": "^0.65.2",
@@ -37,6 +39,6 @@
     "@maskin/core": "^0.1.1"
   },
   "peerDependencies": {
-    "react": "16.x"
+    "react": "^16.0.0"
   }
 }

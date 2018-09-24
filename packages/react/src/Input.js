@@ -4,12 +4,7 @@ import Mask from "./Mask";
 const Input = ({ mask, defaultValue, ...rest }) => (
   <Mask pattern={mask} defaultValue={defaultValue}>
     {({ value, handleChange }) => (
-      <input
-        type="text"
-        defaultValue={value}
-        onChange={handleChange}
-        {...rest}
-      />
+      <input {...rest} type="text" value={value} onChange={handleChange} />
     )}
   </Mask>
 );
