@@ -12,9 +12,16 @@ test("renders correctly", () => {
   expect(getByTestId("myInput")).toBeDefined();
 });
 
+test("default value", () => {
+  const { getByValue } = render(
+    <Input placeholder="enter" mask="##.xx" defaultValue="12ab" />
+  );
+  expect(getByValue("12.ab")).toBeDefined();
+});
+
 test("data flow", () => {
   const { getByValue, getByPlaceholderText } = render(
-    <Input placeholder="enter" mask="##.xx" defaultValue="12.ab" />
+    <Input placeholder="enter" mask="##.xx" defaultValue="12ab" />
   );
 
   expect(getByValue("12.ab")).toBeDefined();
@@ -24,4 +31,10 @@ test("data flow", () => {
   });
 
   expect(getByValue("24.ef")).toBeDefined();
+
+  fireEvent.change(getByPlaceholderText("enter"), {
+    target: { value: "abcd" }
+  });
+
+  expect(getByValue("")).toBeDefined();
 });
