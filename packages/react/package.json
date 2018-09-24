@@ -1,6 +1,12 @@
 {
   "name": "@maskin/react",
-  "description": "Easy to use input masking",
+  "description": "Easy to use masking for React",
+  "keywords": [
+    "masking",
+    "react",
+    "library"
+  ],
+  "license": "MIT",
   "publishConfig": {
     "access": "public"
   },

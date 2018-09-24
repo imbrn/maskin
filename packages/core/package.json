@@ -1,6 +1,11 @@
 {
   "name": "@maskin/core",
-  "description": "Easy to use data masking",
+  "description": "Easy to use string to string data masking",
+  "keywords": [
+    "masking",
+    "library"
+  ],
+  "license": "MIT",
   "publishConfig": {
     "access": "public"
   },

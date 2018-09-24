@@ -1,5 +1,11 @@
 {
   "name": "root",
+  "description": "Easy to use data masking",
+  "keywords": [
+    "masking",
+    "library"
+  ],
+  "license": "MIT",
   "private": true,
   "scripts": {
     "clean": "lerna run clean",
