@@ -47,9 +47,13 @@ _Choose one of the sub-projects that fits your needs better:_
   > Take a look at the project itself for more useful information about how to use it in
   > your react projects.
 
-- Vue (coming soon)
+- [Vue](https://github.com/imbrn/maskin/tree/master/packages/vue)
+  
+  _(Coming soon...)_
 
-- Angular (coming soon)
+- [Angular](https://github.com/imbrn/maskin/tree/master/packages/angular)
+  
+  _(Coming soon...)_
 
 ## License
 
