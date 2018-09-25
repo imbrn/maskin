@@ -1,14 +1,14 @@
 # Maskin
 
+> This project is just in an alpha stage and all its APIs are subject to
+> change. We're also open to suggestions and PRs from all of you.
+
 With Maskin you can provide your users a very natural way to input masked data.
 Let your users think they are typing without software intervention. But it will
 keep everything right.
 
 Maskin is also really easy to configure and use. It provides you a lot of
 flexibility in the way you declare your masking patterns.
-
-> This project is just in an alpha stage and all its APIs are subject to
-> change. We're also open to suggestions and PRs from all of you.
 
 ## Sub-projects
 
