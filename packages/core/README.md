@@ -74,3 +74,7 @@ mask("1a2b3c4d"); // 12cd
   mask("1.2-3"); // 1.2-3
   mask("123"); // 1.2-3
   ```
+
+## License
+
+[MIT License](https://opensource.org/licenses/MIT)

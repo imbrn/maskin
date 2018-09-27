@@ -48,3 +48,7 @@ import { Input } from "@maskin/react";
 ```jsx
 <Input mask="xxx.xxx-##" />
 ```
+
+## License
+
+[MIT License](https://opensource.org/licenses/MIT)
