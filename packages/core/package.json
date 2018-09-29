@@ -13,7 +13,7 @@
   "module": "./dist/core.esm.js",
   "jsdelivr": "./dist/core.min.js",
   "unpkg": "./dist/core.min.js",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "files": [
     "dist/",
     "index.js"
