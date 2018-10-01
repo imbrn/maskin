@@ -12,7 +12,7 @@ mask("12-ab"); // 12-ab
 mask("12ab"); // 12-ab
 mask("1234"); // 12
 mask("12-"); // 12
-mask("1a2b3c4d"); // 12cd
+mask("1a2b3c4d"); // 12-bc
 ```
 
 ## Masking classes
