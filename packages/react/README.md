@@ -49,6 +49,24 @@ import { Input } from "@maskin/react";
 <Input mask="xxx.xxx-##" />
 ```
 
+## `withMaskin` higher-order component
+
+The `withMaskin` function uses the higher-order component pattern to make a component _masked_.
+
+_Example:_
+
+```javascript
+import { withMaskin } from "@maskin/react";
+```
+
+```jsx
+const MyInput = props => <input type="text" {...props} />;
+
+const MyMaskedInput = withMaskin()(MyInput);
+
+<MyMaskedInput mask="(##) ### ####" />
+```
+
 ## License
 
 [MIT License](https://opensource.org/licenses/MIT)
