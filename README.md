@@ -1,6 +1,19 @@
-# Maskin
+<h1 align="center">
+  Maskin
+</h1>
 
-[Core](https://github.com/imbrn/maskin/tree/master/packages/core)  -  [React](https://github.com/imbrn/maskin/tree/master/packages/react)
+<p align="center">
+
+<a href="https://github.com/imbrn/maskin/tree/master/packages/core">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Unofficial_JavaScript_logo_2.svg" height="18"/>
+  Core
+</a> -   
+<a href="https://github.com/imbrn/maskin/tree/master/packages/react">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" height="18"/>
+  React
+</a>
+
+</p>
 
 > This project is just in an alpha stage and all its APIs are subject to
 > change. We're also open to suggestions and PRs from all of you.
