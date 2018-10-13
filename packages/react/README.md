@@ -14,7 +14,7 @@ npm i -S @maskin/react
 yarn add @maskin/react
 ```
 
-## The `Mask` component
+## [The `Mask` component](./docs/Mask.md)
 
 The `Mask` component is a higher-order component that uses the [_children render
 pattern_](https://reactjs.org/docs/render-props.html#using-props-other-than-render)
@@ -34,6 +34,8 @@ import { Mask } from "@maskin/react";
   )}
 </Mask>
 ```
+
+See the [full documentation fo the Mask component](./docs/Mask.md).
 
 ## The `Input` component
 
