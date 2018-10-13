@@ -58,7 +58,7 @@ object as argument. The argument object contains the following properties:
 
   _It contains the final masked output with all characters._
 
-- `rawValue`: this is similar to the `value` but it outputs only the characters
+- `rawValue`: this is similar to the `value` but it outputs only the class characters
 
   Definition: `rawValue: string`
 
