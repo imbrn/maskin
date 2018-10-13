@@ -6,7 +6,7 @@
 
 <a href="https://github.com/imbrn/maskin/tree/master/packages/core/README.md">
   <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Unofficial_JavaScript_logo_2.svg" height="18"/>
-  Vanilla JS
+  Core
 </a> -   
 <a href="https://github.com/imbrn/maskin/tree/master/packages/react/README.md">
   <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" height="18"/>
