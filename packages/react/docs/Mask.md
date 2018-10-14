@@ -23,7 +23,7 @@ This pattern allows you to pass a function as the component child, and this
 function should return a component which can handle the data passed by that
 function arguments.
 
-## Mask props
+## Props
 
 ### `pattern`
 
